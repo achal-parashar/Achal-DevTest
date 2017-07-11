@@ -1,0 +1,10 @@
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\CQM.Entities.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\CQM.Entities.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\CQM.Common.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\bin\Release\Microsoft.Practices.EnterpriseLibrary.Caching.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\obj\Release\ResolveAssemblyReference.cache
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\obj\Release\CQM.Entities.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Entities\obj\Release\CQM.Entities.pdb

@@ -1,0 +1,187 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97C607E4-9A6B-4C60-BE8B-5E9BE8B9C0A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CQM.Entities</RootNamespace>
+    <AssemblyName>CQM.Entities</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CQM.Common, Version=0.18.22.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\CQM.Maine.Internal\Business\CQM.Entities\bin\Debug\CQM.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agenda\AgendaStaffEntity.cs" />
+    <Compile Include="Agenda\DocumentEntity.cs" />
+    <Compile Include="AnnualReport\AnalysisSubmissionEntity.cs" />
+    <Compile Include="AnnualReport\AssessmentSubmissionEntity.cs" />
+    <Compile Include="AnnualReport\AttachDocumentEntity.cs" />
+    <Compile Include="AnnualReport\CaseSearchEntity.cs" />
+    <Compile Include="AnnualReport\ClassSalesStruct.cs" />
+    <Compile Include="AnnualReport\ReportEntity.cs" />
+    <Compile Include="CAD\CadFilingDocEntity.cs" />
+    <Compile Include="CAD\CadInfoEntity.cs" />
+    <Compile Include="CAD\ContactDetailEntity.cs" />
+    <Compile Include="CAD\CrammingDetailEntity.cs" />
+    <Compile Include="CAD\IntakeFormEntity.cs" />
+    <Compile Include="CAD\LetterEntity.cs" />
+    <Compile Include="CAD\StaffAssgmntEntity.cs" />
+    <Compile Include="CAD\TemplateEntity.cs" />
+    <Compile Include="CAD\TicklerEntity.cs" />
+    <Compile Include="CAD\VarianceEntity.cs" />
+    <Compile Include="CAD\WinterDisEntity.cs" />
+    <Compile Include="CE\CBRSearchValueEntity.cs" />
+    <Compile Include="CE\ContentEntity.cs" />
+    <Compile Include="CE\IndexValues.cs" />
+    <Compile Include="Comments\CommentAttachmentEntity.cs" />
+    <Compile Include="Comments\PublicCommentEntity.cs" />
+    <Compile Include="ContactList\ContactListEntity.cs" />
+    <Compile Include="ContactList\ListMemberEntity.cs" />
+    <Compile Include="ContactList\MailingListEntity.cs" />
+    <Compile Include="ContactList\PrintLabelEmailEntity.cs" />
+    <Compile Include="ContactList\PrintLabelInfoEntity.cs" />
+    <Compile Include="DataRequest\BaseEntity.cs" />
+    <Compile Include="DataRequest\ContactEntity.cs" />
+    <Compile Include="DataRequest\DataRequestDocumentEntity.cs" />
+    <Compile Include="DataRequest\DataRequestMasterEntity.cs" />
+    <Compile Include="DataRequest\DataRequestQuestionEntity.cs" />
+    <Compile Include="DataRequest\DataRequestResponseEntity.cs" />
+    <Compile Include="DataRequest\DataRequestSearchEntity.cs" />
+    <Compile Include="DataRequest\DataRequestSearchRespEntity.cs" />
+    <Compile Include="DataRequest\DataRequestSetEntity.cs" />
+    <Compile Include="DataRequest\DataRequestSupplQuestionEntity.cs" />
+    <Compile Include="DataRequest\ItemEntity.cs" />
+    <Compile Include="DocumentMgmt\ConfDocAccessEntity.cs" />
+    <Compile Include="DocumentMgmt\ConfDocumentEntity.cs" />
+    <Compile Include="Masters\ArrangementTypeEntity.cs" />
+    <Compile Include="Masters\CADCaseSubtypeEntity.cs" />
+    <Compile Include="Masters\CADCaseTypeEntity.cs" />
+    <Compile Include="Masters\CADCountIssueEntity.cs" />
+    <Compile Include="Masters\CADSectionEntity.cs" />
+    <Compile Include="Masters\ChapterEntity.cs" />
+    <Compile Include="Masters\ChptrSecSubSecEntity.cs" />
+    <Compile Include="Masters\CompanyEntity.cs" />
+    <Compile Include="Masters\CountyEntity.cs" />
+    <Compile Include="Masters\DispositionEntity.cs" />
+    <Compile Include="Masters\DocumentSubTypeEntity.cs" />
+    <Compile Include="Masters\DocumentTypeEntity.cs" />
+    <Compile Include="Masters\FranchiseEntity.cs" />
+    <Compile Include="Masters\IDNameEntity.cs" />
+    <Compile Include="Masters\IndustryEntity.cs" />
+    <Compile Include="Masters\IndustrySubtypeEntity.cs" />
+    <Compile Include="Masters\IssueQuestionEntity.cs" />
+    <Compile Include="Masters\MatterContactRoleEntity.cs" />
+    <Compile Include="Masters\MatterSubTypeEntity.cs" />
+    <Compile Include="Masters\MatterTypeEntity.cs" />
+    <Compile Include="Masters\MunicipalityEntity.cs" />
+    <Compile Include="Masters\NoticeTypeEntity.cs" />
+    <Compile Include="Masters\ReferenceEntity.cs" />
+    <Compile Include="Masters\SectionEntity.cs" />
+    <Compile Include="Masters\StaffEntitiy.cs" />
+    <Compile Include="Masters\StatusEntity.cs" />
+    <Compile Include="Masters\SubsectionEntity.cs" />
+    <Compile Include="MatterFiling\ContactEntity.cs" />
+    <Compile Include="MatterManagement\ActivePartyListEntity.cs" />
+    <Compile Include="MatterManagement\BusinessRuleEntity.cs" />
+    <Compile Include="MatterManagement\CodeNameEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MatterManagement\EventEntity.cs" />
+    <Compile Include="MatterManagement\FilingInfoEntity.cs" />
+    <Compile Include="MatterManagement\MatterContactEntity.cs" />
+    <Compile Include="MatterManagement\MatterDocumentEntity.cs" />
+    <Compile Include="MatterManagement\MatterEntity.cs" />
+    <Compile Include="MatterManagement\MatterFilingDocEntity.cs" />
+    <Compile Include="MatterManagement\MatterMasterEntity.cs" />
+    <Compile Include="MatterManagement\NotificationListEntity.cs" />
+    <Compile Include="MatterManagement\RecordCountsEntity.cs" />
+    <Compile Include="MatterManagement\ReportProjectEntity.cs" />
+    <Compile Include="MatterManagement\SearchDocumentEntity.cs" />
+    <Compile Include="MatterManagement\SearchDocumentResultEntity.cs" />
+    <Compile Include="MatterManagement\StaffAssignmentEntity.cs" />
+    <Compile Include="Pre97Cases\Pre97MatterResultEntity.cs" />
+    <Compile Include="Pre97Cases\Pre97SearchDocumentEntity.cs" />
+    <Compile Include="Pre97Cases\Pre97SearchDocumentResultEntity.cs" />
+    <Compile Include="Pre97Cases\Pre97SearchMatterEntity.cs" />
+    <Compile Include="Search\FavoriteSearchEntity.cs" />
+    <Compile Include="MatterManagement\MatterDetailEntity.cs" />
+    <Compile Include="MatterManagement\MatterInfoEntity.cs" />
+    <Compile Include="MatterManagement\MatterResultEntity.cs" />
+    <Compile Include="MatterManagement\MemberEntity.cs" />
+    <Compile Include="MatterManagement\SearchMatterEntity.cs" />
+    <Compile Include="Subscription\SubscriptionEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\LoginEntity.cs" />
+    <Compile Include="Security\ProcessActivityEntity.cs" />
+    <Compile Include="Security\ProcessEntity.cs" />
+    <Compile Include="TariffManagement\IDNameTariffEntity.cs" />
+    <Compile Include="TariffManagement\TariffBookAttachmentEntity.cs" />
+    <Compile Include="TariffManagement\TariffBookEntity.cs" />
+    <Compile Include="TariffManagement\TariffRateSection.cs" />
+    <Compile Include="TariffManagement\TariffSearchEntity.cs" />
+    <Compile Include="TariffManagement\TariffSearchResultEntity.cs" />
+    <Compile Include="TariffManagement\TariffSubmissionAttachmentEntity.cs" />
+    <Compile Include="TariffManagement\TariffSubmissionDtlEntity.cs" />
+    <Compile Include="TariffManagement\TariffSubmissionEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

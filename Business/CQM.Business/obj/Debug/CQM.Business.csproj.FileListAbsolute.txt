@@ -1,0 +1,77 @@
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\obj\Debug\ResolveAssemblyReference.cache
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Common.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.INotification.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Notification.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\office.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.xml
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\office.xml
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.pdb
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.dll
+D:\CQM-Phase-II\10.10.27.1\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\office.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.xml
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\office.xml
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\obj\Debug\ResolveAssemblyReference.cache
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Common.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.INotification.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Notification.dll
+D:\CQM-Phase-II\CQMStage\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\obj\Debug\ResolveAssemblyReference.cache
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\office.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Office.Interop.Word.xml
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Entities.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\office.xml
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Resource.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\obj\Debug\CQM.Business.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.NotificationManager.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.pdb
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\CQM.Common.dll
+D:\CQM-Phase-II\CQM Stage UAT Merging\Custom\Custom\Business\CQM.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Validation.dll

@@ -1,0 +1,407 @@
+﻿
+//---------------------------------------------------------------------
+// Author: Hans Yadav
+// Version: 1.0.0
+// Date: 15/09/2010
+// Description: This Entity is used for storing the DR Questions information.
+//
+// History:
+// Changed By                       Changed On
+//
+//---------------------------------------------------------------------
+
+
+
+
+namespace CQM.Entities
+{
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.ServiceModel;
+    using System.Runtime.Serialization;
+
+
+    /// <summary>
+    /// Represents a DataRequestSearchResponse object.
+    /// </summary>
+    /// 
+    [DataContract]
+    [Serializable]
+    public class DataRequestSearchRespEntity : BaseEntity
+    {
+
+        private System.String caseNumber;
+        [DataMember]
+        public System.String CaseNumber
+        {
+            get { return caseNumber; }
+            set { caseNumber = value; }
+        }
+
+        private System.String drQuesId;
+        [DataMember]
+        public System.String DRQuesId
+        {
+            get { return drQuesId; }
+            set { drQuesId = value; }
+        }
+
+        private System.Int32 drQuesSeq;
+        [DataMember]
+        public System.Int32 DRQuesSeq
+        {
+            get { return drQuesSeq; }
+            set { drQuesSeq = value; }
+        }
+
+        private System.String quesText;
+        [DataMember]
+        public System.String QuesText
+        {
+            get { return quesText; }
+            set { quesText = value; }
+        }
+
+        private System.String quesDesc;
+        [DataMember]
+        public System.String QuesDesc
+        {
+            get { return quesDesc; }
+            set { quesDesc = value; }
+        }
+
+         private System.String status;
+        [DataMember]
+         public System.String Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+        
+        private System.String caseTitle;
+        [DataMember]
+        public System.String CaseTitle
+        {
+            get { return caseTitle; }
+            set { caseTitle = value; }
+        }
+
+        private System.String createdBy;
+        [DataMember]
+        public System.String CreatedBy
+        {
+            get { return createdBy; }
+            set { createdBy = value; }
+        }
+
+        private System.DateTime createdDate;
+        [DataMember]
+        public System.DateTime CreatedDate
+        {
+            get { return createdDate; }
+            set { createdDate = value; }
+        }
+
+        private System.String drSetDesc;
+        [DataMember]
+        public System.String DRSetDesc
+        {
+            get { return drSetDesc; }
+            set { drSetDesc = value; }
+        }
+
+        private System.DateTime drSetDueDate;
+        [DataMember]
+        public System.DateTime DRSetDueDate
+        {
+            get { return drSetDueDate; }
+            set { drSetDueDate = value; }
+        }
+
+        private System.String drSetId;
+        [DataMember]
+        public System.String DRSetId
+        {
+            get { return drSetId; }
+            set { drSetId = value; }
+        }
+
+        private System.Int32 drSetNum;
+        [DataMember]
+        public System.Int32 DRSetNum
+        {
+            get { return drSetNum; }
+            set { drSetNum = value; }
+        }
+
+        private System.Int32 drSetSeq;
+        [DataMember]
+        public System.Int32 DRSetSeq
+        {
+            get { return drSetSeq; }
+            set { drSetSeq = value; }
+        }
+
+        private System.String drSetStatus;
+        [DataMember]
+        public System.String DRSetStatus
+        {
+            get { return drSetStatus; }
+            set { drSetStatus = value; }
+        }
+
+        private System.String filedExternally;
+        [DataMember]
+        public System.String FiledExternally
+        {
+            get { return filedExternally; }
+            set { filedExternally = value; }
+        }
+
+        private System.String isAttachment;
+        [DataMember]
+        public System.String IsAttachment
+        {
+            get { return isAttachment; }
+            set { isAttachment = value; }
+        }
+
+        private System.String isDeleted;
+        [DataMember]
+        public System.String IsDeleted
+        {
+            get { return isDeleted; }
+            set { isDeleted = value; }
+        }
+
+        private System.Int32 propoundedUponCompany;
+        [DataMember]
+        public System.Int32 PropoundedUponCompany
+        {
+            get { return propoundedUponCompany; }
+            set { propoundedUponCompany = value; }
+        }
+
+        private System.String propoundedUponEmailId;
+        [DataMember]
+        public System.String PropoundedUponEmailId
+        {
+            get { return propoundedUponEmailId; }
+            set { propoundedUponEmailId = value; }
+        }
+
+        private System.Int32 propoundedUponIndividual;
+        [DataMember]
+        public System.Int32 PropoundedUponIndividual
+        {
+            get { return propoundedUponIndividual; }
+            set { propoundedUponIndividual = value; }
+        }
+
+        private System.String propoundedUponName;
+        [DataMember]
+        public System.String PropoundedUponName
+        {
+            get { return propoundedUponName; }
+            set { propoundedUponName = value; }
+        }
+
+        private System.Int32 propoundedUponStaff;
+        [DataMember]
+        public System.Int32 PropoundedUponStaff
+        {
+            get { return propoundedUponStaff; }
+            set { propoundedUponStaff = value; }
+        }
+
+        private System.Int32 propoundedUponType;
+        [DataMember]
+        public System.Int32 PropoundedUponType
+        {
+            get { return propoundedUponType; }
+            set { propoundedUponType = value; }
+        }
+
+        private System.Int32 requestedByCompany;
+        [DataMember]
+        public System.Int32 RequestedByCompany
+        {
+            get { return requestedByCompany; }
+            set { requestedByCompany = value; }
+        }
+
+
+
+        private System.Int32 requestedByIndividual;
+        [DataMember]
+        public System.Int32 RequestedByIndividual
+        {
+            get { return requestedByIndividual; }
+            set { requestedByIndividual = value; }
+        }
+
+        [DataMember]
+        public System.String RequestedByName { get; set; }
+
+        private System.Int32 requestedByStaff;
+        [DataMember]
+        public System.Int32 RequestedByStaff
+        {
+            get { return requestedByStaff; }
+            set { requestedByStaff = value; }
+        }
+
+
+
+        private System.Int32 requestedByType;
+        [DataMember]
+        public System.Int32 RequestedByType
+        {
+            get { return requestedByType; }
+            set { requestedByType = value; }
+        }
+
+        private System.String updatedBy;
+        [DataMember]
+        public System.String UpdatedBy
+        {
+            get { return updatedBy; }
+            set { updatedBy = value; }
+        }
+
+        private System.DateTime updatedDate;
+        [DataMember]
+        public System.DateTime UpdatedDate
+        {
+            get { return updatedDate; }
+            set { updatedDate = value; }
+        }
+
+
+        private List<DataRequestDocumentEntity> drDocumentEntityList = new List<DataRequestDocumentEntity>();
+        [DataMember]
+        public List<DataRequestDocumentEntity> DRDocumentEntityList
+        {
+            get { return drDocumentEntityList; }
+            set { drDocumentEntityList = value; }
+        }
+
+        private System.String reqIndicator;
+        [DataMember]
+        public System.String ReqIndicator
+        {
+            get { return reqIndicator; }
+            set { reqIndicator = value; }
+        }
+
+        
+        private System.Int32 totalRecords;
+        [DataMember]
+        public System.Int32 TotalRecords
+        {
+            get { return totalRecords; }
+            set { totalRecords = value; }
+        }
+
+        [DataMember]
+        public bool IsSuccessfull { get; set; }
+
+        [DataMember]
+        public System.String MatterTitle { get; set; }
+
+        
+
+         private System.String propoundedUponCompany_s;
+        [DataMember]
+        public System.String PropoundedUponCompany_s
+        {
+            get { return propoundedUponCompany_s; }
+            set { propoundedUponCompany_s = value; }
+        }
+
+        private System.String propoundedUponIndividual_s;
+        [DataMember]
+        public System.String PropoundedUponIndividual_s
+        {
+            get { return propoundedUponIndividual_s; }
+            set { propoundedUponIndividual_s = value; }
+        }
+
+        private System.String requestedByCompany_s;
+        [DataMember]
+        public System.String RequestedByCompany_s
+        {
+            get { return requestedByCompany_s; }
+            set { requestedByCompany_s = value; }
+        }
+
+        private System.String requestedByIndividual_s;
+        [DataMember]
+        public System.String RequestedByIndividual_s
+        {
+            get { return requestedByIndividual_s; }
+            set { requestedByIndividual_s = value; }
+        }
+
+        private System.DateTime quesDueDate;
+        [DataMember]
+        public System.DateTime QuesDueDate
+        {
+            get { return quesDueDate; }
+            set { quesDueDate = value; }
+        }
+
+        private System.String respText;
+        [DataMember]
+        public System.String RespText
+        {
+            get { return respText; }
+            set { respText = value; }
+        }
+
+        private System.Int32 drRespSeq;
+        [DataMember]
+        public System.Int32 DRRespSeq
+        {
+            get { return drRespSeq; }
+            set { drRespSeq = value; }
+        }
+        //Added By : Nilesh on 05/09/2012 for DEFW35
+        private System.String reviewedBy;
+        [DataMember]
+        public System.String ReviewedBy
+        {
+            get { return reviewedBy; }
+            set { reviewedBy = value; }
+        }
+        private System.String submittedBy;
+        [DataMember]
+        public System.String SubmittedBy
+        {
+            get { return submittedBy; }
+            set { submittedBy = value; }
+        }
+
+        // Start Added By : Manoj on 24 April 2013 
+        private System.String isQuesDeleted;
+        [DataMember]
+        public System.String IsQuesDeleted
+        {
+            get { return isQuesDeleted; }
+            set { isQuesDeleted = value; }
+        }
+        // End Added By : Manoj on 24 April 2013
+
+        private System.Int32 noOfDRQues;
+        [DataMember]
+        public System.Int32 NoOfDRQues
+        {
+            get { return noOfDRQues; }
+            set { noOfDRQues = value; }
+        }
+    }
+
+}
