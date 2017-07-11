@@ -1,0 +1,753 @@
+﻿@model MasterDb.Domain.Entities.WorkRequest
+@using MasterDb.WebUI.Helpers
+
+@section HeadContent {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('body').append('<div id="MainThrobberImage" style="z-index: 99999999999999;"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>');
+
+
+
+            if ('@Model.Emergency' == "True")
+            {
+                $("#Emergency").prop("checked", true);
+
+            }
+            if ($("#Id").val() > 0) {
+               
+                if ('@Model.IsEmergenyType'=='True')
+                {
+                    $("#divEmergency").show();
+                    $("#divPriority").hide();
+                }
+                if ('@Model.IsUnitSpecific' == "True") {
+                    $("#importunittableButton").show();
+                    $("#importunittable").show();
+                    $("#tblBulkUploadData tr:last").find('.unit-nbr').focus();
+                }
+                if ('@Model.SubTransactionTypeId' > 0) {
+                    $("#subtransactionDiv").show();
+                }
+                if ('@Model.SpecialProjectId' > 0) {
+                    $("#specialProjectDiv").show();
+                }
+
+            }
+            
+            $("#Emergency").click(function () {
+                if (this.checked) {
+                    $("#Emergency").attr("value", "True");
+
+                } else {
+                    $("#Emergency").attr("value", "False");
+                }
+            });
+            $("#WorkRequestForm").submit(function (e) {
+
+                var enableDropDown = "1";
+                if (ValidateWorkRequestControls() == "0") {
+                    e.preventDefault(e);
+                    enableDropDown = "0"
+
+                }
+                if (ValidateWorkRequestControls() == "1") {
+                    var unitAdded = $("[name$='.UnitId']");
+                    $.each(unitAdded, function () {
+                        if ($(this).val() == 0) {
+                            var indexs = (($(this).attr('name').split('['))["1"]).charAt(0);
+                            if ($('input[name= "UnitTable[' + indexs + '].IsDeleted"]').val() != 'true') {
+                                $("#waningMessage").text("Please add all unit in system before creating work request.");
+                                $("div.warning-popup").show();
+                                $("#lightbox_overlay1").show();
+                                enableDropDown = "0";
+                                e.preventDefault(e);
+
+                            }
+                        }
+                    });
+                }
+                if ($('#divPriority').css('display') == 'none') {                   
+                    $("#PriorityId").data("kendoDropDownList").value(null)
+                }
+               
+                if ('@Model.Id' > 0 && enableDropDown == "1") {
+                    var dom = $("#DomainId").data("kendoDropDownList");
+                    var tra = $("#TransactionTypeId").data("kendoDropDownList");
+                    var sub = $("#SubTransactionTypeId").data("kendoDropDownList");
+                    dom.enable(true);
+                    tra.enable(true);
+                    sub.enable(true);
+                }
+
+            });
+
+        });
+     
+        function GetSelectedDomain() {
+            return { domainId: $("#DomainId").data("kendoDropDownList").value() }
+        }
+
+        function OnDomainSelect(e) {
+            var deletedItems = $("[name$='.IsDeleted']");
+            $.each(deletedItems, function () {
+                if ($(this).val() != 'true') {
+                    e.preventDefault();
+                    $("#waningMessage").text("Remove all Units in this WorkRequest befor changing the domain.");
+                    $("div.warning-popup").show();
+                    $("#lightbox_overlay1").show();
+                    return false;
+                }
+            });
+        }
+
+        function DomainSelect() {
+
+            if ($("#DomainId").data("kendoDropDownList").value() > 0) {
+                $("#lightbox_overlay1").show();
+                $.ajaxExt({
+                    url: '/Workrequest/GetDomainDetails',
+                    type: 'POST',
+                    data: { domainId: $("#DomainId").data("kendoDropDownList").value() },
+                    showErrorMessage: false,
+                    showThrobber: true,
+                    throbberCenter: true,
+                    success: function (data, msg) {
+                        if (msg == "Y") {
+                            $("#specialProjectDiv").show();
+                            $("#SpecialProjectId").data("kendoDropDownList").dataSource.read();
+                        }
+                        else
+                            $("#specialProjectDiv").hide();
+                        $("#lightbox_overlay1").hide();
+                    },
+                    successServerError: function (data) {
+                        notify("error", data.Message);
+                        $("#lightbox_overlay1").hide();
+                    }
+                });
+            }
+            else {
+                $("#specialProjectDiv").hide();
+                $("#lightbox_overlay1").hide();
+            }
+
+
+        }
+
+        function GetSelectedTransaction() {
+            return { parentId: $("#TransactionTypeId").data("kendoDropDownList").value() }
+        }
+        function TransactionSelect() {
+            var transactionId = $("#TransactionTypeId").data("kendoDropDownList").value();
+            if (transactionId > 0) {
+                $("#lightbox_overlay1").show();
+                $.ajaxExt({
+                    url: '/Workrequest/GetTransactionDetails',
+                    type: 'POST',
+                    data: { transactionId: transactionId },
+                    showErrorMessage: false,
+                    showThrobber: true,
+                    throbberCenter: true,
+                    success: function (data, msg) {
+
+                        if (data.Object.IsUnitSpecific == true) {
+                            $("#importunittableButton").show();
+                            $("#importunittable").show();
+                            $("#tblBulkUploadData tr:last").find('.unit-nbr').focus();
+                        }
+                        else {
+
+                            $("#importunittableButton").hide();
+                            $("#importunittable").hide();
+
+                        }
+
+                        if (data.Object.IsEmergency == true)
+                        {
+                            $("#divEmergency").show();
+                            $("#divPriority").hide();
+                        }
+                        else
+                        {
+                            $("#divPriority").show();
+                            //$("#PriorityId").data("kendoDropDownList").value(null);
+                            $("#divEmergency").hide();
+                        }
+                        if (data.Object.HaveSubTransaction == "Y") {
+                            $("#SubTransactionTypeId").data("kendoDropDownList").dataSource.read();
+                            $("#subtransactionDiv").show();
+                        }
+                        else
+                            $("#subtransactionDiv").hide();
+                        $("#lightbox_overlay1").hide();
+                    },
+                    successServerError: function (data) {
+                        notify("error", data.Message);
+                        $("#lightbox_overlay1").hide();
+                    }
+                });
+            }
+            else {
+                $("#importunittableButton").hide();
+                $("#importunittable").hide();
+                $("#subtransactionDiv").hide();
+                $("#SubTransactionTypeId").data("kendoDropDownList").value(null);
+            }
+        }
+        function ClearAllMessage() {
+            $("#valDomainId").text("");
+            $("#valRequestOriginId").text("");
+            $("#valTransactionTypeId").text("");
+            $("#valRequestDate").text("");
+            $("#valSubTransactionTypeId").text("");
+        }
+        function ValidateWorkRequestControls() {
+            ClearAllMessage();
+            var domain = $("#DomainId").val().trim();
+            var request = $("#RequestOriginId").val().trim();
+            var transaction = $("#TransactionTypeId").val().trim();
+            var requestdate = $("#RequestDate").val().trim();
+            var subtransaction = $("#SubTransactionTypeId").val().trim();
+            var status = "1";
+            if (domain.length == 0) {
+                status = "0";
+                $("#valDomainId").text("Required.");
+            }
+
+            if (request.length == 0) {
+                status = "0";
+                $("#valRequestOriginId").text("Required.");
+            }
+
+            if (transaction.length == 0) {
+                status = "0";
+                $("#valTransactionTypeId").text("Required.");
+            }
+
+            if (requestdate.length == 0) {
+                status = "0";
+                $("#valRequestDate").text("Required.");
+            }
+            if ($('#subtransactionDiv').css('display') != 'none') {
+
+                if (subtransaction.length == 1 && subtransaction == "0") {
+                    status = "0";
+                    $("#valSubTransactionTypeId").text("Required.");
+                }
+                else if (subtransaction.length == 0) {
+                    status = "0";
+                    $("#valSubTransactionTypeId").text("Required.");
+                }
+            }
+
+            if (status == "0")
+                $("span.form-validator").show();
+            else
+                $("span.form-validator").hide();
+            //Check all unit are added to get mapped to
+
+            return status;
+        }
+        function CloseUploadDataPopup() {
+            $("#lightbox_overlay1").hide();
+            $("#lightBox1").hide();
+        }
+        function CloseWarningPopup() {
+            $("div.warning-popup").hide();
+            $("#lightbox_overlay1").hide();
+            $("#waningMessage").text("");
+        }
+        function UploadDataPopup() {
+            $("#lightbox_overlay1").show();
+            var maskHeight = $(window).height();
+            var maskWidth = $(window).width();
+            var dislogHeight = "500";
+            var dialogTop = (maskHeight - dislogHeight) / 2;
+            var dialogLeft = (maskWidth - $('#lightBox1').width()) / 2;
+
+            $.ScrollToTop();
+            setTimeout(function () {
+                $("#lightBox1").css({ top: "10%", left: 0, right: 0, position: "absolute", margin: "auto" });
+                $("#lightBox1").fadeIn();
+            }, 100);
+        }
+
+        function onUploadError(e) {
+
+            error_handler(e);
+        }
+
+        function onSuccess(e) {
+            var obj = $.parseJSON(e.XMLHttpRequest.responseText);
+
+            if (obj.Success) {
+                var docs = $("#AttachedDocList").val();
+                if (!docs.trim())
+                    $("#AttachedDocList").val(obj.Attachments);
+                else {
+                    docs += "," + obj.Attachments;
+                    $("#AttachedDocList").val(docs);
+                }
+
+
+            }
+
+        }
+
+
+
+    </script>
+    <link href="~/Content/workrequest.css" rel="stylesheet" />
+
+}
+<h2>Work Request</h2>
+@{
+    ViewBag.Title = "Work Request";
+}
+@section Instructions {
+    These are the screen instructions.
+}
+
+@using (Html.BeginForm("CreateWorkRequest", "WorkRequest", FormMethod.Post, new { id = "WorkRequestForm" }))
+
+{
+    @Html.HiddenFor(m => m.ContextId)
+    @Html.HiddenFor(m => m.CreatedBy)
+    @Html.HiddenFor(m => m.AttachedDocList)
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="well k-content">
+        <h2 class="ra-well-title">
+            <a class="btn btn-default btn-sm pull-right p" style="margin: -5px -5px 0 0;" href="#itemListWR" data-toggle="collapse">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+           
+            @if (Model.Id > 0)
+            {
+                <span style="padding-right:15px;">Edit Work Request</span>
+                <label class="control-label" >Work Request Id - @Model.Id</label>
+            }
+            else
+            {
+                <span>Create Work Request</span>
+            }
+
+        </h2>
+        <div id="itemListWR" class="collapse in">
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Work Request Status</label>
+                        <div class="col-md-8 padding_0">
+                            @(Html.Kendo().DropDownListFor(m => m.StatusId).DataTextField("Name").DataValueField("Id").HtmlAttributes(new { tabindex = 1, style = "width:80%" })
+                             .DataSource(source =>
+                             {
+                                 source.Read(read =>
+                                 {
+                                     read.Action("WorkRequest_ReadStatus", "WorkRequest");
+                                 });
+                             })
+                            )
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Created By</label>
+                        <div class="col-md-8 padding_0">
+                            @Html.DisplayFor(m => m.CreatedBy)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Domain">Domain*</label>
+                        <div class="col-md-8 padding_0">
+                            @if (Model.Id > 0)
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.DomainId).DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width:80%" })
+                                     .Events(e => e.Change("DomainSelect").Select("OnDomainSelect"))
+                                     .Enable(false)
+                                     .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("Domain_Read", "Administration");
+                                         });
+                                     })
+                                )
+                            }
+                            else
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.DomainId).DataTextField("Name").DataValueField("Id").HtmlAttributes(new { style = "width:80%" })
+                                     .Events(e => e.Change("DomainSelect").Select("OnDomainSelect"))
+                                    .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("Domain_Read", "Administration");
+                                         });
+                                     })
+                                )
+                            }
+
+                            <span id="valDomainId" class="form-validator" style="display:none"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Request Origin*</label>
+                        <div class="col-md-8 padding_0">
+                            @(Html.Kendo().DropDownListFor(m => m.RequestOriginId).DataTextField("Text").DataValueField("Value").HtmlAttributes(new { tabindex = 8, style = "width:80%" })
+                                    .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadRequestOrigin", "WorkRequest");
+                                         });
+                                     })
+                            )
+                            <span id="valRequestOriginId" class="form-validator" style="display:none"></span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Transaction*</label>
+                        <div class="col-md-8 padding_0">
+                            @if (Model.Id > 0)
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.TransactionTypeId).DataTextField("Name").DataValueField("Id").HtmlAttributes(new { tabindex = 3, style = "width:80%" })
+                                        .OptionLabel("Select One")
+                                        .Events(e => e.Change("TransactionSelect"))
+                                        .Enable(false)
+                                         .DataSource(source =>
+                                         {
+                                             source.Read(read =>
+                                             {
+                                                 read.Action("WorkRequest_ReadTransactionType", "WorkRequest");
+                                             });
+                                         })
+                                )
+                            }
+                            else
+                            {
+
+
+                                @(Html.Kendo().DropDownListFor(m => m.TransactionTypeId).DataTextField("Name").DataValueField("Id").HtmlAttributes(new { tabindex = 3, style = "width:80%" })
+                                            .OptionLabel("Select One")
+                                            .Events(e => e.Change("TransactionSelect"))
+                                             .DataSource(source =>
+                                             {
+                                                 source.Read(read =>
+                                                 {
+                                                     read.Action("WorkRequest_ReadTransactionType", "WorkRequest");
+                                                 });
+                                             })
+                                )
+                            }
+                            <span id="valTransactionTypeId" class="form-validator" style="display:none"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="subtransactionDiv" style="display:none;">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Sub-Transaction*</label>
+                        <div class="col-md-8 padding_0">
+                            @if (Model.Id > 0)
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.SubTransactionTypeId).DataTextField("Name").DataValueField("Id")
+                                 .HtmlAttributes(new { tabindex = 4, style = "width:80%" })
+                                    .OptionLabel("Select One")
+                                    .Enable(false)
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadSubTransaction", "WorkRequest", new { parentId = Model.TransactionTypeId });
+                                         });
+                                     })
+                                )
+                            }
+                            else
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.SubTransactionTypeId).AutoBind(false).DataTextField("Name").DataValueField("Id")
+                              .HtmlAttributes(new { tabindex = 4, style = "width:80%" })
+                                    .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadSubTransaction", "WorkRequest").Data("GetSelectedTransaction");
+                                         });
+                                     })
+                                )
+                            }
+
+                            <span id="valSubTransactionTypeId" class="form-validator" style="display:none"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Request Date*</label>
+                        <div class="col-md-8 padding_0">
+                            @(Html.Kendo().DatePickerFor(m => m.RequestDate).Format("MM/dd/yyyy").HtmlAttributes(new { tabindex = 8, style = "width:80%" }))
+                            <span id="valRequestDate" class="form-validator" style="display:none"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">FollowUp Date*</label>
+                        <div class="col-md-8 padding_0">
+                            @(Html.Kendo().DatePickerFor(m => m.FollowUpDate).Format("MM/dd/yyyy").HtmlAttributes(new { tabindex = 9, style = "width:80%" }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">                    
+                    <div id="divEmergency" class="form-group" style="display:none;">
+                        <label class="control-label col-lg-4 col-md-4">Emergency</label>
+                        <div class="vertical-center checkbox checkbox-primary" style="float:left">
+                            <input name="Emergency"  id="Emergency" value='@Html.Raw(Model.Emergency?"true":"false")' type="checkbox" tabindex="5" />
+                            <label  style="padding-left:5px;font-size:12px;">Additional Fees may apply.</label>
+                        </div>                      
+                    </div>
+                    <div id="divPriority" class="form-group" >
+                        <label class="control-label col-lg-4 col-md-4">Priority</label>
+                        <div class="col-md-8 padding_0">
+                         
+                            @(Html.Kendo().DropDownListFor(m => m.PriorityId).AutoBind(true).DataTextField("Text").DataValueField("Value")
+                             
+                              .HtmlAttributes(new { tabindex = 5, style = "width:80%" })
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadPriority", "WorkRequest");
+                                         });
+                                     })
+                                     .Value(Model.PriorityId.ToString())
+                                    
+                            )
+                         
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Contact Name</label>
+                        <div class="col-md-8 padding_0">
+                            @Html.TextBoxFor(m => m.ContactPersonName, new { tabindex = 10, @class = "k-textbox", @style = "width:80%" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Description</label>
+                        <div class="col-md-8 padding_0">
+                            @Html.TextAreaFor(m => m.TransactionDescription, new { tabindex = 6, rows = 6, columns = 40, @style = "width:80%" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Comments</label>
+                        <div class="col-md-8 padding_0">
+                            @Html.TextAreaFor(m => m.Comments, new { tabindex = 11, rows = 6, columns = 40, @style = "width:80%" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group" id="specialProjectDiv" style="display:none">
+                        <label class="control-label col-lg-4 col-md-4" for="Name">Special Project</label>
+                        <div class="col-md-8 padding_0">
+                            @if (Model.Id > 0)
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.SpecialProjectId)
+                                    .HtmlAttributes(new { tabindex = 7, style = "width:80%" })
+                                    .DataTextField("Name")
+                                    .DataValueField("Id")
+                                    .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadDomainProject", "WorkRequest", new { domainId = Model.DomainId });
+                                         });
+                                     })
+                                )
+                            }
+                            else
+                            {
+                                @(Html.Kendo().DropDownListFor(m => m.SpecialProjectId).AutoBind(false)
+                                    .HtmlAttributes(new { tabindex = 7, style = "width:80%" })
+                                    .DataTextField("Name")
+                                    .DataValueField("Id")
+                                    .OptionLabel("Select One")
+                                     .DataSource(source =>
+                                     {
+                                         source.Read(read =>
+                                         {
+                                             read.Action("WorkRequest_ReadDomainProject", "WorkRequest").Data("GetSelectedDomain");
+                                         });
+                                     })
+                                )
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Attachment</label>
+                        <div class="file-upload col-md-8 padding_0">
+                @(Html.Kendo().Upload()
+                    .Name("uploadAttachment")
+                    //.Messages(m => m.Select("Browse or drag to page"))
+                    .Multiple(true)
+                    //.DropZone("html")
+                    .Async(a => a
+                            .Save("WorkRequestAttachment_Upload", "WorkRequest",
+                            new { ContextId = Model.ContextId })
+                        )
+                        .Events(e => e.Error("onUploadError").Success("onSuccess"))
+                            )
+                            <div id="downloadDoc" style="width:100%;">
+                                @foreach (var item in Model.WorkRequestAttachments)
+                                {
+                                    <a id="@item.AttachmentId" href="@Url.Action("WorkRequestDownload", "WorkRequest",new {docName=item.AttachmentName,displayName=item.AttachmentDisplayName })" >
+                                        <i class="fa fa-download" aria-hidden="true" style="font-size:16px;"></i>&nbsp;&nbsp;@item.AttachmentDisplayName
+                                    </a><br />
+                                }
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>@*id="itemList"*@
+        <div class="actions">
+            <button type="button" class="k-button k-button-icontext" id="importunittableButton" style="display:none" onclick="UploadDataPopup();">
+                Bulk Add
+            </button>
+        </div>
+
+        <div id="importunittable" style="display:none">
+            @Html.Partial("_LoadBulkUnit", Model.UnitTable)
+        </div>
+        <div class="actions" style="text-align:center">
+           
+               
+                <a class="k-button k-button-icontext" href="@Url.Action("ListWorkRequest", "WorkRequest", new { ContextId = Model.ContextId })">
+                    @*<i class="fa fa-refresh" aria-hidden="true"></i>*@
+                    <i class="fa fa-undo" aria-hidden="true" style="font-size:16px;padding-right:4px;"></i>
+                    Cancel
+                </a>
+            
+
+            <button type="submit" class="k-button k-button-icontext">
+                <span class="k-sprite fa fa-floppy-o"></span>
+                Save Request
+            </button>
+        </div>
+    </div>
+
+    <div class="popUp" id="lightBox1" style="display:none;width:750px;">
+        <div style="min-width: 100px; min-height: 100px;" class="popUpContent">
+            <div class="title">
+                <h4 name="Title">Bulk Unit Add</h4>
+                <a role="button" onclick="CloseUploadDataPopup();"
+                   href="javascript:;" class="k-window-action k-link" aria-label="Close">
+                    <span class="k-icon k-i-close"></span>
+                </a>
+            </div>
+            <div name="ActualContent" class="content-area">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label col-lg-3 col-md-3" for="Name">Enter Unit Numbers</label>
+                            <div class="col-md-9 padding_0">
+                                @Html.TextAreaFor(m => m.BulkUnitNumbers, new { rows = 10, columns = 40, @style = "width:80%" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="actions" style="text-align:center">
+                    <button type="button" class="k-button k-button-icontext" onclick="CloseUploadDataPopup();">
+                        <span class="k-icon k-i-close"></span>
+                        Close
+                    </button>
+                    <button type="button" class="k-button k-button-icontext" onclick="BulkUpload();">
+                        <span class="k-sprite fa fa-floppy-o"></span>
+                        Proceed
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div id="lightbox_overlay1" style="display:none;" class="divOverlay">
+</div>
+<div class="warning-popup">
+
+    <div class="warning-popUpContent">
+        <div class="poup-header">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true" style="font-size:20px;"></i>Warning
+        </div>
+        <div name="ActualContent" class="warning-content-area">
+
+            <p><span id="waningMessage"></span></p>
+        </div>
+        <div class="warning-popup-footer">
+            <button type="button" class="k-button k-button-icontext" onclick="CloseWarningPopup();">
+                <span class="k-icon k-i-close"></span>
+                Close
+            </button>
+        </div>
+    </div>
+
+</div>
+
