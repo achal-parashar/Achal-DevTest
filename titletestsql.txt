@@ -1,0 +1,69 @@
+--select * from ImportActivity
+
+--select ii.Id, im.Id
+--from dbo.TitleImportInfo ii
+--inner join dbo.ImportActivity ia on ia.Id = ii.ImportActivityId
+--inner join dbo.ImportMessage im on im.ImportTypeId = 2 and im.MessageNbr = 515  -- Invalid Company Code
+--left outer join dbo.Tenant t on t.Name = ii.CompanyCode and t.DomainId = ia.DomainId
+--where ii.ImportActivityId = @ImportActivityId
+
+--select * from Tenant
+--where DomainId=14
+
+--select * from ImportMessage where MessageNbr=516
+
+--select * from Title Where UnitId=21913
+
+select * from TitleImportInfo
+--Delete from ImportActivity where Id >574
+--Delete From TitleImportInfo
+--Delete From TitleImportMessage
+
+select top 2 * from Title order by DateModified desc
+
+--select Max(Id) from Title
+select * from 
+
+select Ti.*
+
+from TitleImportInfo ti
+inner join Unit u
+on u.UnitNbr=ti.UnitNbr and u.Vin=ti.Vin
+Left join StateOrProvince SP
+on sp.Name=ti.TitleState
+left join StateOrProvince RSP
+on Rsp.Name=ti.SoldToState
+left join StateOrProvince spl
+on spl.Name=ti.LienHolderState
+where ti.ImportActivityId=600 and ti.ActionType='I' 
+
+select * from unit where unitNbr='8965522'
+select * from Title Where UnitId=21198
+
+select * from ErrorLog order by DateStamp desc
+
+select * from Unit where UnitNbr='8965523'
+
+select * From Title where UnitId=21913
+
+select * from Tenant where Id=6
+
+
+select 
+ti.*
+from TitleImportInfo ti
+inner join Unit u
+on u.UnitNbr=ti.UnitNbr and u.Vin=ti.Vin
+inner join StateOrProvince SP
+on sp.Name=ti.TitleState
+left join StateOrProvince RSP
+on Rsp.Name=ti.SoldToState
+left join StateOrProvince spl
+on spl.Name=ti.LienHolderState
+where ti.ImportActivityId=606 and ti.ActionType='I' 
+
+select * from TitleImportInfo where vin='1FVACWDU8FHGJ5778' and UnitNbr='8965523'
+select * from Unit where vin='1FVACWDU8FHGJ5778' and UnitNbr='8965523'
+
+select top 2* from errorlog order by DateStamp desc
+Cannot insert the value NULL into column 'IsTitleManaged', table 'FleetBaseDev.dbo.Title'; column does not allow nulls. INSERT fails.
